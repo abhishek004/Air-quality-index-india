@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jVectorMap demo</title>
+  <link rel="stylesheet" href="jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
+  <script src="jquery-2.1.3.min.js"></script>
+  <script src="jquery-jvectormap-2.0.2.min.js"></script>
+  <script src="jquery-jvectormap-in-mill-en.js"></script>
+</head>
+<body>
+  <div id="map" style="width: 550px; height: 600px"></div>
+  <p>This is a paragraph with little content.</p>
+  <script>
+    /*$(function(){
+      $('#map').vectorMap({map: 'in_mill_en'});
+    });
+*/
+    $(function(){
+      var v = new jvm.MultiMap({
+        container: $('#map'),
+        maxLevel: 1,
+        main: {
+          map: 'in_mill_en',
+          zoomMax : 40,
+          onRegionTipShow: function(event, label, code){
+          label.html(
+          '<b>'+label.html()+'</b></br>'+
+          '<b>Unemployment rate: </b>'+"helllllllo"+'%'
+        );},
+         // onRegionClick: function
+        }
+        
+        // mapUrlByCode: function(code, multiMap){
+        //   return code.toLowerCase()+'-'+
+        //          multiMap.defaultProjection+'-en.js';
+        // }
+      });
+      // $('#map').vectorMap({
+      //   map: 'in_mill_en',
+        
+      // });
+    });
+    
+  </script>
+</body>
+</html>
