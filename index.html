@@ -26,13 +26,18 @@
                 focusOn: 'IN-DL',
                 onRegionClick: function(event, code){
                     console.log(code);
+                    myfunc(code);
                 }
             });
 
-            var m = $("#map").vectorMap('get','mapObject');
-            m.setFocus({
-                region:'IN-MP'
-            });
+            var myfunc = function(code){
+                m = $("#map").vectorMap('get','mapObject');
+                m.setFocus({
+                    x: 0.5,
+                    y: 0.5,
+                    region: code
+                })
+            };
 
             var facts = [
                     "An average American breathe 2 gallons of air per minute which means around 3400 gallons of air each day.",
