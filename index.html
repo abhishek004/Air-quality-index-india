@@ -19,7 +19,7 @@
         <div class="alert alert-danger myclass fade in" role="alert"><p id="al"><strong>FACT</strong> This is a paragraph with little content.</p></div>
 
         <script>
-
+/*
             $("#map").vectorMap({
                 map: 'in_mill_en',
                 zoomMax: 40,
@@ -38,6 +38,39 @@
                     region: code
                 })
             };
+*/
+
+            $(function(){
+                var markerIndex = 0, markersCoords = {};
+
+                var map = new jvm.Map({
+                    map: 'in_mill_en',
+                    container: $('#map'),
+                    markerStyle: {
+                        initial: {
+                            fill: 'red'
+                        }
+                    },
+                    onRegionClick: function(e,c){
+                        map.removeAllMarkers();
+                        map.setFocus({
+                            region:c
+                        });
+                    }
+                });
+
+                map.container.click(function(e){
+                    var latLng = map.pointToLatLng(e.offsetX, e.offsetY);
+                    var targetCls = $(e.target).attr('class');
+                    if (latLng && (!targetCls || (targetCls && $(e.target).attr('class').indexOf('jvectormap-marker') === -1))) {
+                        markersCoords[markerIndex] = latLng;
+                        map.addMarker(markerIndex, {latLng: [latLng.lat, latLng.lng], name: "hello"});
+                        markerIndex += 1;
+                    }
+                });
+            });
+
+
 
             var facts = [
                     "An average American breathe 2 gallons of air per minute which means around 3400 gallons of air each day.",
