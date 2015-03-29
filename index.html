@@ -6,16 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>jVectorMap demo</title>
         <link rel="stylesheet" href="css/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
-        <link rel="stylesheet" href="css/bootstrap-theme.css" type="text/css"/>
-        <link rel="stylesheet" href="css/bootstrap.css" type="text/css"/>
+        <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css" type="text/css"/>
+        <link rel="stylesheet" href="dist/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="css/mycss.css" type="text/css"/>
         <script src="js/jquery-2.1.3.min.js"></script>
-        <script src="js/bootstrap.js"></script>
+        <script src="dist/js/bootstrap.min.js"></script>
         <script src="js/jquery-jvectormap-2.0.2.min.js"></script>
         <script src="js/jquery-jvectormap-in-mill-en.js"></script>
     </head>
     <body>
         <div id="map" style="width: 550px; height: 600px"></div>
-        <p>This is a paragraph with little content.</p>
+        <div class="alert alert-danger myclass fade in" id="al" role="alert"><p><strong>FACT</strong> This is a paragraph with little content.</p></div>
+
         <script>
 
             $(function(){
@@ -24,6 +26,7 @@
                     maxLevel: 1,
                     main: {
                         map: 'in_mill_en',
+                        backgroundColor: 'black',
                         zoomMax: 40,
                         onRegionTipShow: function (event, label, code) {
                             label.html('<b>' + label.html() + '</b></br>' +
@@ -32,7 +35,11 @@
                     }
                 });
             });
+            setInterval(function() {
+                // Do something every 5 seconds
+                $("#al").fadeIn();
 
+            }, 3000);
         </script>
 
     </body>
