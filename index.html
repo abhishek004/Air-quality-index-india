@@ -16,30 +16,46 @@
     </head>
     <body>
         <div id="map" style="width: 550px; height: 600px"></div>
-        <div class="alert alert-danger myclass fade in" id="al" role="alert"><p><strong>FACT</strong> This is a paragraph with little content.</p></div>
+        <div class="alert alert-danger myclass fade in" role="alert"><p id="al"><strong>FACT</strong> This is a paragraph with little content.</p></div>
 
         <script>
 
-            $(function(){
-                var v = new jvm.MultiMap({
-                    container: $('#map'),
-                    maxLevel: 1,
-                    main: {
-                        map: 'in_mill_en',
-                        backgroundColor: 'black',
-                        zoomMax: 40,
-                        onRegionTipShow: function (event, label, code) {
-                            label.html('<b>' + label.html() + '</b></br>' +
-                                    '<b>Unemployment rate: </b>' + code);
-                        }
-                    }
-                });
+            $("#map").vectorMap({
+                map: 'in_mill_en',
+                zoomMax: 40,
+                focusOn: 'IN-DL',
+                onRegionClick: function(event, code){
+                    console.log(code);
+                }
             });
-            setInterval(function() {
-                // Do something every 5 seconds
-                $("#al").fadeIn();
 
-            }, 3000);
+            var m = $("#map").vectorMap('get','mapObject');
+            m.setFocus({
+                region:'IN-MP'
+            });
+
+            var facts = [
+                    "An average American breathe 2 gallons of air per minute which means around 3400 gallons of air each day.",
+                    "Inhaling Air pollution takes away at least 1-2 years of a typical human life.",
+                    "It has effects as small as burning eyes and itchy throat to as large as breathing problems and death.",
+                    "Pollutants that are released into the air, as opposed to land and water pollutants, are the most harmful.",
+                    "Rising levels of air pollution in Beijing has brought a new disease &#8211; Beijing cough.",
+                    "Air pollution is not a recent occurrence. In 1952, the Great smog of London killed 8000 people.",
+                    "Deaths caused by air pollution cost the European Union €161 billion.",
+                    "Electric vehicles produce less air pollutants. They stir up dirt but without producing gases.",
+                    "Producing heavy crude oil increases chances of air pollution by 40% than producing light crude oil.",
+                    "According to the Lancet journal, air pollution caused by waiting in traffic increases the chances of death caused due to heart attack.",
+                    "Toxic air pollution poses a greater threat to children, due to their smaller physical size and lung capacity.",
+                    "Air pollution and resulting deaths are increasing fastest in Asia.",
+
+            ];
+
+            var v = 0;
+            setInterval(function(){
+                v = (v+1)%facts.length;
+                $("#al").html(facts[v]);
+            },5000);
+
         </script>
 
     </body>
