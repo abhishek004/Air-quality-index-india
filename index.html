@@ -13,7 +13,6 @@
         <script src="dist/js/bootstrap.min.js"></script>
         <script src="js/jquery-jvectormap-2.0.2.min.js"></script>
         <script src="js/jquery-jvectormap-in-mill-en.js"></script>
-
         <style>
 
             body{
@@ -37,7 +36,9 @@
             }
             #map{
                 opacity: 0.9;
+
             }
+
         </style>
     </head>
     <body>
@@ -90,13 +91,12 @@
                     map: 'in_mill_en',
                     container: $('#map'),
                     zoomMax : 40,
-                    //backgroundColor: "#30732c",
                     regionStyle: {
                         initial: {
-                          "fill-opacity": 0.6,
+                          "fill-opacity": 0.8,
                         }
                     },
-                    backgroundColor: "#FFFFFF",
+                    backgroundColor: "rgba(0,0,0,0)",
                     series: {
                         regions: [{
                             attribute: 'fill'

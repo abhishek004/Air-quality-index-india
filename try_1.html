@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>jVectorMap demo</title>
+        <link rel="stylesheet" href="css/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
+        <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css" type="text/css"/>
+        <link rel="stylesheet" href="dist/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="css/mycss.css" type="text/css"/>
+        <script src="js/jquery-2.1.3.min.js"></script>
+        <script src="dist/js/bootstrap.min.js"></script>
+        <script src="js/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="js/jquery-jvectormap-in-mill-en.js"></script>
+    </head>
+    <body>
+    <div class="wrapper">
+        <div class="evil ">
+            Main
+        </div>
+            <div class = "containevil  container">
+                <div class = "row">
+                    <nav class="navbar navbar-default" style="height: 70px;">
+                        <div class= container-fluid">
+
+                        </div>
+                    </nav>
+                </div>
+            </div>
+                <div id="map" class=" mappie " style="width: 550px; height: 600px; "></div>
+                <div class=" factscon containevil "><p id="al" ><strong>FACT</strong> This is a paragraph with little content.</p></div>
+    </div>
+
+    <script>
+        /*
+         $("#map").vectorMap({
+         map: 'in_mill_en',
+         zoomMax: 40,
+         focusOn: 'IN-DL',
+         onRegionClick: function(event, code){
+         console.log(code);
+         myfunc(code);
+         }
+         });
+
+         var myfunc = function(code){
+         m = $("#map").vectorMap('get','mapObject');
+         m.setFocus({
+         x: 0.5,
+         y: 0.5,
+         region: code
+         })
+         };
+         */
+
+        //var palette = ['#ffffff'];
+
+
+
+        $(function(){
+            var generateColors = function(){
+                var colors = {},
+                        key;
+
+                for (key in map.regions) {
+                    colors[key] = palette[Math.floor(Math.random()*palette.length)];
+                }
+                return colors;
+            }
+
+            var x=1;
+            var mar = {
+                'IN-DL': [
+                    {latLng: [28.612377216571485,77.13822514859623], name: 'test'},
+                    {latLng: [28.72469583159369,77.06164393421015], name:'test2'},
+                    {latLng: [28.732607447941277,77.171930771927], name:'test3'}
+                ],
+                'IN-RJ': [
+                    {latLng: [26.861826577895645, 74.44550755239231], name: 'test4'},
+                    {latLng: [26.672348520395225, 74.25079840299976], name:'test5'},
+                    {latLng: [26.176053379532554, 73.85601169619399], name:'test6'}
+                ]
+            };
+            var map = new jvm.Map({
+                map: 'in_mill_en',
+                container: $('#map'),
+                zoomMax : 40,
+                regionStyle: {
+                    initial: {
+                        "fill-opacity": 0.8
+                    }
+                },
+                backgroundColor: "rgba(0,0,0,0)",
+                series: {
+                    regions: [{
+                        attribute: 'fill'
+                    }]
+                },
+                markerStyle: {
+                    initial: {
+                        fill: 'red'
+                    }
+                },
+                onRegionClick: function(e,c){
+                    //map.removeAllMarkers();
+                    map.setFocus({
+                        region:c,animate:true
+                    });
+                    console.log(c);
+                    //m = $("#map").vectorMap('get','mapObject');
+                    map.addMarkers(mar[c]);
+                    setTimeout(function(){
+                        x=0;
+                    },500);
+
+                },
+
+                onViewportChange: function(e,s){
+
+                    if(x===0 && s<1.5){
+                        map.removeAllMarkers();
+                        //x=1;
+                    }
+                }
+            });
+
+        });
+/*
+test
+ 26.861826577895645, 74.44550755239231
+ 26.672348520395225, 74.25079840299976
+ 26.176053379532554, 73.85601169619399
+
+ 28.612377216571485 77.13822514859623
+ 28.72469583159369 77.06164393421015
+ 28.732607447941277 77.171930771927
+ */
+
+
+        var facts = [
+            "An average American breathe 2 gallons of air per minute which means around 3400 gallons of air each day.",
+            "Inhaling Air pollution takes away at least 1-2 years of a typical human life.",
+            "It has effects as small as burning eyes and itchy throat to as large as breathing problems and death.",
+            "Pollutants that are released into the air, as opposed to land and water pollutants, are the most harmful.",
+            "Rising levels of air pollution in Beijing has brought a new disease &#8211; Beijing cough.",
+            "Air pollution is not a recent occurrence. In 1952, the Great smog of London killed 8000 people.",
+            "Deaths caused by air pollution cost the European Union €161 billion.",
+            "Electric vehicles produce less air pollutants. They stir up dirt but without producing gases.",
+            "Producing heavy crude oil increases chances of air pollution by 40% than producing light crude oil.",
+            "According to the Lancet journal, air pollution caused by waiting in traffic increases the chances of death caused due to heart attack.",
+            "Toxic air pollution poses a greater threat to children, due to their smaller physical size and lung capacity.",
+            "Air pollution and resulting deaths are increasing fastest in Asia.",
+
+        ];
+
+        var v = 0;
+        setInterval(function(){
+            v = (v+1)%facts.length;
+            $("#al").html(facts[v]);
+        },5000);
+
+    </script>
+
+    </body>
+</html>
+
+

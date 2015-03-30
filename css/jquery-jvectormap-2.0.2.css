@@ -28,8 +28,11 @@
     line-height: 10px;
     text-align: center;
     box-sizing: content-box;
+    opacity: 0.5;
 }
-
+/*
+   opacity has been set to 0!!! button are irritating
+*/
 .jvectormap-zoomin, .jvectormap-zoomout {
     width: 10px;
     height: 10px;
