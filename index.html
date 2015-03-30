@@ -13,13 +13,43 @@
         <script src="dist/js/bootstrap.min.js"></script>
         <script src="js/jquery-jvectormap-2.0.2.min.js"></script>
         <script src="js/jquery-jvectormap-in-mill-en.js"></script>
+
+        <style>
+
+            body{
+                 background: url(Bg/1.jpg) no-repeat center center fixed; 
+                 -webkit-background-size: cover;
+                 -moz-background-size: cover;
+                 -o-background-size: cover;
+                 background-size: cover;
+            }
+
+            div{
+                -moz-border-radius: 10px;
+                -webkit-border-radius: 10px;
+                border-radius: 10px; /* future proofing */
+                -khtml-border-radius: 10px; /* for old Konqueror browsers */
+            }
+
+            .margin{
+                margin-top: 40px;
+                margin-bottom: 20px;
+            }
+            #map{
+                opacity: 0.9;
+            }
+        </style>
     </head>
     <body>
-        <div id="map" style="width: 550px; height: 600px"></div>
-        <div class="alert alert-danger myclass fade in" role="alert"><p id="al"><strong>FACT</strong> This is a paragraph with little content.</p></div>
-
+        <div class = "container">
+            <div class = "row">
+                <div id="map" class="margin" style="width: 550px; height: 600px"></div>
+                <div class="alert alert-danger myclass fade in" role="alert"><p id="al"><strong>FACT</strong> This is a paragraph with little content.</p></div>
+            </div>
+        </div>
+        
         <script>
-/*
+/*          
             $("#map").vectorMap({
                 map: 'in_mill_en',
                 zoomMax: 40,
@@ -39,8 +69,20 @@
                 })
             };
 */
+            
+            var palette = ['#0c2b0a', '#061133', '#542529', '#66345a', '#f72109'];
 
             $(function(){
+                var generateColors = function(){
+                var colors = {},
+                    key;
+
+                for (key in map.regions) {
+                  colors[key] = palette[Math.floor(Math.random()*palette.length)];
+                }
+                return colors;
+                }
+
                 var markerIndex = 0, markersCoords = {};
                 var x=1;
 
@@ -48,7 +90,18 @@
                     map: 'in_mill_en',
                     container: $('#map'),
                     zoomMax : 40,
-                    backgroundColor: '#383f47',
+                    //backgroundColor: "#30732c",
+                    regionStyle: {
+                        initial: {
+                          "fill-opacity": 0.6,
+                        }
+                    },
+                    backgroundColor: "#FFFFFF",
+                    series: {
+                        regions: [{
+                            attribute: 'fill'
+                        }]
+                    },
                     markerStyle: {
                         initial: {
                             fill: 'red'
@@ -74,6 +127,8 @@
                       }                    
                     }
                 });
+
+                map.series.regions[0].setValues(generateColors());
 
                 map.container.click(function(e){
                     var latLng = map.pointToLatLng(e.offsetX, e.offsetY);
