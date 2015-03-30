@@ -42,20 +42,36 @@
 
             $(function(){
                 var markerIndex = 0, markersCoords = {};
+                var x=1;
 
                 var map = new jvm.Map({
                     map: 'in_mill_en',
                     container: $('#map'),
+                    zoomMax : 40,
+                    backgroundColor: '#383f47',
                     markerStyle: {
                         initial: {
                             fill: 'red'
                         }
                     },
                     onRegionClick: function(e,c){
-                        map.removeAllMarkers();
+                        //map.removeAllMarkers();
                         map.setFocus({
-                            region:c
+                            region:c,animate:true
                         });
+                        setTimeout(function(){
+                          x=0;  
+                        },500);
+                        
+                    },
+
+                    onViewportChange: function(e,s){
+                      console.log(s);
+                      if(x===0 && s<1.5){
+                        console.log(x);
+                        map.removeAllMarkers(); 
+                        x=1;
+                      }                    
                     }
                 });
 
@@ -66,6 +82,7 @@
                         markersCoords[markerIndex] = latLng;
                         map.addMarker(markerIndex, {latLng: [latLng.lat, latLng.lng], name: "hello"});
                         markerIndex += 1;
+                        console.log(latLng);
                     }
                 });
             });
