@@ -117,11 +117,16 @@
                 },
 
                 onViewportChange: function(e,s){
-
+                    console.log(s);
                     if(x===0 && s<1.5){
                         map.removeAllMarkers();
                         //x=1;
                     }
+                },
+
+                onMarkerClick: function(e, c){
+                    // here replace "#al" with your id for div!!
+                    $("#al").html(c+' is clicked: display AQI message');
                 }
             });
 
