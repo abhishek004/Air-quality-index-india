@@ -35,9 +35,12 @@
                 margin-bottom: 20px;
             }
 
-
+            .container{
+                position:relative;
+            }
             #map{
-                float: left;
+                position: fixed;
+                clear: left;
             }
 
             .myclass{
@@ -46,7 +49,11 @@
 
             #test{
                 color: black;
-                margin-top: 300px;
+                top: 200px;
+                left: 1000px;
+                position: fixed;
+                clear:left;
+                
             }
 
             #al{
@@ -59,17 +66,15 @@
         <div class = "container">
             <div class = "row">
                 <div id="map" class="margin" style="width: 700px; height: 600px"></div>
-                <div id = "test" class="alert alert-info myclass fade in" role="alert"><p id="al"></p></div>
+                <div id = "test" class="alert alert-info myclass fade in" role="alert"><p id="al">Abhishek</p></div>
             </div>
-       
+            
         </div>
         <?php 
             //$pg =  file_get_html('http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.&StateId=6&CityId=85');
             echo "HELLLLLO";
         ?>
-
-        </div>
-
+            
         
         <script>
 /*          
@@ -223,11 +228,9 @@
             ];
 
 
-            <?php 
-                $pg =  file_get_html('http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.&StateId=6&CityId=85');
-                echo $pg;
-            ?>
 
+
+            
           
             var v = 0;
             /*setInterval(function(){
