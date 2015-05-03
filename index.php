@@ -169,6 +169,7 @@
 
                 $table = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr");
                 global $max;
+                global $aqi;
                 //echo "Gas name, concentration value, unit, concentration(previous 24 hours)/prescribed standard, AQI Value<br>";
                 for($index = 2; $index < $table->length; $index++){
                     $gas = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr[$index]/td[1]/text()");
@@ -180,7 +181,7 @@
                     $prescribed = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr[$index]/td[6]/span/text() ");
                     //echo $prescribed->item(0)->nodeValue." ";
                     $result = getIndex($gas->item(0)->nodeValue, $concentration->item(0)->nodeValue);
-                    if($result != 0){
+                    if(array_key_exists($gas->item(0)->nodeValue,$aqi)){
                         echo "<tr>";
                         echo "<td>" . $gas->item(0)->nodeValue . "</td>";
                         echo "<td>" . $result . "</td>";
@@ -194,6 +195,7 @@
             }
 
             function display_result(){
+                global $max;
                 echo "Most prominent pollutant is ==> ".$max["gas"]."<br>";
                 echo "With AQI: ".$max["aqi"];
             }
@@ -228,7 +230,7 @@
                 </table>
             </div>
 
-            <!-- <div id = "result"><?php display_result() ?></div> -->
+            <div id = "result"><?php display_result() ?></div>
           </div>
 
         </div><!-- /.container -->
