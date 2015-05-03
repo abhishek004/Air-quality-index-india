@@ -61,18 +61,15 @@
                 <div id="map" class="margin" style="width: 700px; height: 600px"></div>
                 <div id = "test" class="alert alert-info myclass fade in" role="alert"><p id="al"></p></div>
             </div>
-<<<<<<< HEAD
-            
+       
         </div>
         <?php 
             //$pg =  file_get_html('http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.&StateId=6&CityId=85');
             echo "HELLLLLO";
         ?>
-            
-=======
 
         </div>
->>>>>>> origin/master
+
         
         <script>
 /*          
@@ -226,16 +223,11 @@
             ];
 
 
-
-<<<<<<< HEAD
-
-            
-=======
             <?php 
                 $pg =  file_get_html('http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.&StateId=6&CityId=85');
                 echo $pg;
             ?>
->>>>>>> origin/master
+
           
             var v = 0;
             /*setInterval(function(){
