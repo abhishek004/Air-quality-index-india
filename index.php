@@ -68,7 +68,7 @@
                 position: relative;
                 float:right;
                 width:400px;
-                top:200px;
+                top:100px;
             }
 
 
@@ -83,6 +83,13 @@
                 margin-top: 15px;
             }
 
+            #result{
+                width:400px;
+                height: 70px;
+                position: relative;
+                float: right;
+                top: 150px;
+            }
         </style>
     </head>
     <body>
@@ -109,9 +116,9 @@
 
         <?php
             include_once('simple_html_dom.php'); 
-            
+            error_reporting(E_ERROR | E_PARSE);
             function getAQI($I_low, $I_high, $C_low, $C_high, $C){
-                return (($I_high - $I_low)/($C_high - $C_low))*($C - $C_low) + $I_low;
+                return round((($I_high - $I_low)/($C_high - $C_low))*($C - $C_low) + $I_low);
             }
 
             //echo getAQI(0,50,0,0.064,0.00804);
@@ -171,6 +178,7 @@
                 global $max;
                 global $aqi;
                 //echo "Gas name, concentration value, unit, concentration(previous 24 hours)/prescribed standard, AQI Value<br>";
+                //echo '<table class="table table-bordered">';
                 for($index = 2; $index < $table->length; $index++){
                     $gas = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr[$index]/td[1]/text()");
                     //echo $gas->item(0)->nodeValue." ";
@@ -181,6 +189,7 @@
                     $prescribed = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr[$index]/td[6]/span/text() ");
                     //echo $prescribed->item(0)->nodeValue." ";
                     $result = getIndex($gas->item(0)->nodeValue, $concentration->item(0)->nodeValue);
+
                     if(array_key_exists($gas->item(0)->nodeValue,$aqi)){
                         echo "<tr>";
                         echo "<td>" . $gas->item(0)->nodeValue . "</td>";
@@ -192,12 +201,13 @@
                         }
                     }
                 }
+                //echo "</table>";
             }
 
             function display_result(){
                 global $max;
-                echo "Most prominent pollutant is ==> ".$max["gas"]."<br>";
-                echo "With AQI: ".$max["aqi"];
+                echo 'Most prominent pollutant is ==> '.$max["gas"].'<br>'."With AQI: ".$max["aqi"];
+                
             }
             //echo "<br>".getIndex("PM 2.5", 29.18);
             
@@ -214,11 +224,10 @@
 
 
         <div class="container">
-
           <div class="starter-template">
             <div id="map" class="margin" style="width: 700px; height: 600px"></div>
-            <div id="table">
-                <table border='1' align "right">
+            <div id="table">     
+                <table class="table table-bordered" align "right">
                     <tr>
                         <th>Gas</th>
                         <th>AQI</th>
@@ -230,9 +239,9 @@
                 </table>
             </div>
 
-            <div id = "result"><?php display_result() ?></div>
+            <div class="alert alert-info" id = "result"><?php display_result() ?></div>
+           
           </div>
-
         </div><!-- /.container -->
 
         <!-- <div class = "container">
