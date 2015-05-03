@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1"><title>
+    ::CPCB Current Air Pollution Levels::
+</title>
+    <link href="style.css" rel="stylesheet" type="text/css"/>
+    <meta http-equiv="refresh" content="60"/>
+    <script language="JavaScript">
+        <!--
+
+        var sURL = unescape(window.location.pathname);
+
+        function doLoad() {
+            var qrStr = window.location.search;
+            var spQrStr = qrStr.substring(1);
+            setTimeout("location.href='frmCurrentDataNew.aspx?station=" + spQrStr + "'", 5 * 60000);
+        }
+
+        function refresh() {
+            window.location.href = sURL;
+        }
+        //-->
+    </script>
+</head>
+<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0" bgcolor="silver" onload="doLoad()">
+<form name="form1" method="post" action="frmCurrentDataNew.aspx?StationName=Hyderabad&amp;StateId=30&amp;CityId=7"
+      id="form1">
+    <div>
+        <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value=""/>
+        <input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value=""/>
+        <input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE"
+               value="/wEPDwULLTE5MTUxNDExMzMPFgYeEFN0YXJ0TWluRGF0ZVRpbWUFFjEyLzMwLzE4OTkgMTI6MDA6MDAgQU0eEFN0YXJ0TWF4RGF0ZVRpbWUFFTQvMzAvMjAxNSAxMjowMDowMCBBTR4LTWF4RGF0ZVRpbWUFFTQvMzAvMjAxNSAxMjowMDowMCBBTRYCAgMPZBYEAgMPZBYEAgEPZBYCZg9kFggCAw8PFgIeBFRleHQFC1NhbmF0aG5hZ2FyZGQCBw8PFgIfAwUYVGh1cnNkYXksIEFwcmlsIDMwLCAyMDE1ZGQCCw8PFgIfAwUrSW5kdXN0cmlhbCBSZXNpZGVudGlhbCBSdXJhbCBhbmQgT3RoZXIgQXJlYWRkAg4PDxYCHwMFCzEyOjE2OjUwIEFNZGQCAg9kFgJmD2QWBgIDD2QWAmYPZBYIAhcPDxYCHgdFbmFibGVkaGRkAhsPDxYCHwRoZGQCHw8PFgIfBGhkZAIjDw8WAh8EaGRkAgUPDxYCHwMFH0RhdGUgVGltZSA6IDMwLzA0LzIwMTUgMDA6MDU6MDBkZAIHD2QWAmYPDxYCHwMF9zo8dGFibGUgY2VsbHNwYWNpbmc9JzAnIGNlbGxwYWRkaW5nPScwJyBXaWR0aD0nMTAwJScgYm9yZGVyPScxJyBib3JkZXJjb2xvcj0nZ2FpbnNib3JvJz48dHIgIGJnY29sb3I9J1doaXRlJyBzdHlsZT0nZm9udC1mYW1pbHk6QXJpYWw7Zm9udC1zaXplOjExcHg7Y29sb3I6QmxhY2s7Zm9udC13ZWlnaHQ6Ym9sZDt2ZXJ0aWNhbC1hbGlnbjp0b3A7dGV4dC1hbGlnbjpjZW50ZXI7cGFkZGluZzo1cHg7JyAgPjx0ZCBXaWR0aD0nMjMlJyBhbGlnbj0nbGVmdCc+UGFyYW1ldGVyczwvdGQ+PHRkIFdpZHRoPSc4JSc+RGF0ZTwvdGQ+PHRkIFdpZHRoPSc4JSc+VGltZTwvdGQ+PHRkIFdpZHRoPSc4JSc+Q29uY2VudHJhdGlvbjwvdGQ+PHRkIFdpZHRoPSc2JSc+VW5pdDwvdGQ+PHRkIFdpZHRoPScyNyUnPjxiPkNvbmNlbnRyYXRpb24gKHByZXZpb3VzIDI0IEhvdXJzKSAvIFByZXNjcmliZWQgU3RhbmRhcmQ8L2I+PC90ZD48dGQgV2lkdGg9JzE4JSc+UmVtYXJrczwvdGQ+PC90cj48dHIgc3R5bGU9J2ZvbnQtZmFtaWx5OnZlcmRhbmE7Zm9udC1zaXplOjEycHg7Y29sb3I6QmxhY2s7cGFkZGluZzo1cHg7CW1hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOiNFRUYxRjg7Jz48dGQgV2lkdGg9JzE4JScgPk5pdHJpYyBPeGlkZTwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MzAvMDQvMjAxNTwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MDA6MDU6MDA8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdyaWdodCcgPjxzcGFuIHN0eWxlPSdjb2xvcjpCbHVlOyc+MC43OTwvc3Bhbj4gPC90ZD48dGQgV2lkdGg9JzYlJyBhbGlnbj0nY2VudGVyJyA+wrVnL20zIDwvdGQ+PHRkIGFsaWduPSdjZW50ZXInIFdpZHRoPSczMSUnPjxzcGFuIHN0eWxlPSdjb2xvcjpncmVlbic+Ny4xOTwvc3Bhbj4gwrVnL20zIDwvdGQ+PHRkIFdpZHRoPScyMiUnPiZuYnNwOzwvdGQ+PC90cj48dHIgc3R5bGU9J2ZvbnQtZmFtaWx5OnZlcmRhbmE7Zm9udC1zaXplOjEycHg7Y29sb3I6QmxhY2s7cGFkZGluZzo1cHg7bWFyZ2luOiAxIDEgMSAxO2JhY2tncm91bmQtY29sb3I6V2hpdGU7Jz48dGQgV2lkdGg9JzE4JScgPk5pdHJvZ2VuIGRpb3hpZGU8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdjZW50ZXInPjMwLzA0LzIwMTU8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdjZW50ZXInPjAwOjA1OjAwPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0ncmlnaHQnID48c3BhbiBzdHlsZT0nY29sb3I6Qmx1ZTsnPjMwLjgzPC9zcGFuPiA8L3RkPjx0ZCBXaWR0aD0nNiUnIGFsaWduPSdjZW50ZXInID7CtWcvbTMgPC90ZD48dGQgYWxpZ249J2NlbnRlcicgV2lkdGg9JzMxJSc+PHNwYW4gc3R5bGU9J2NvbG9yOmdyZWVuJz4zMy4xODwvc3Bhbj4gwrVnL20zIDxici8+PHNwYW4gc3R5bGU9J2NvbG9yOlB1cnBsZTsnPlByZXNjcmliZWQgU3RhbmRhcmQgOiA4MC4wMCDCtWcvbTMgPC9zcGFuPjwvdGQ+PHRkIFdpZHRoPScyMiUnPiZuYnNwOzwvdGQ+PC90cj48dHIgc3R5bGU9J2ZvbnQtZmFtaWx5OnZlcmRhbmE7Zm9udC1zaXplOjEycHg7Y29sb3I6QmxhY2s7cGFkZGluZzo1cHg7CW1hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOiNFRUYxRjg7Jz48dGQgV2lkdGg9JzE4JScgPk94aWRlcyBvZiBOaXRyb2dlbjwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MzAvMDQvMjAxNTwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MDA6MDU6MDA8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdyaWdodCcgPjxzcGFuIHN0eWxlPSdjb2xvcjpCbHVlOyc+MTcuMDU8L3NwYW4+IDwvdGQ+PHRkIFdpZHRoPSc2JScgYWxpZ249J2NlbnRlcicgPnBwYjwvdGQ+PHRkIGFsaWduPSdjZW50ZXInIFdpZHRoPSczMSUnPjxzcGFuIHN0eWxlPSdjb2xvcjpncmVlbic+MjMuNTA8L3NwYW4+IHBwYjwvdGQ+PHRkIFdpZHRoPScyMiUnPiZuYnNwOzwvdGQ+PC90cj48dHIgc3R5bGU9J2ZvbnQtZmFtaWx5OnZlcmRhbmE7Zm9udC1zaXplOjEycHg7Y29sb3I6QmxhY2s7cGFkZGluZzo1cHg7bWFyZ2luOiAxIDEgMSAxO2JhY2tncm91bmQtY29sb3I6V2hpdGU7Jz48dGQgV2lkdGg9JzE4JScgPlN1bGZ1ciBEaW94aWRlPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4zMC8wNC8yMDE1PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4wMDowNTowMDwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J3JpZ2h0JyA+PHNwYW4gc3R5bGU9J2NvbG9yOkJsdWU7Jz4zLjI2PC9zcGFuPiA8L3RkPjx0ZCBXaWR0aD0nNiUnIGFsaWduPSdjZW50ZXInID7CtWcvbTMgPC90ZD48dGQgYWxpZ249J2NlbnRlcicgV2lkdGg9JzMxJSc+PHNwYW4gc3R5bGU9J2NvbG9yOmdyZWVuJz4yOC4wNDwvc3Bhbj4gwrVnL20zIDxici8+PHNwYW4gc3R5bGU9J2NvbG9yOlB1cnBsZTsnPlByZXNjcmliZWQgU3RhbmRhcmQgOiA4MC4wMCDCtWcvbTMgPC9zcGFuPjwvdGQ+PHRkIFdpZHRoPScyMiUnPiZuYnNwOzwvdGQ+PC90cj48dHIgc3R5bGU9J2ZvbnQtZmFtaWx5OnZlcmRhbmE7Zm9udC1zaXplOjEycHg7Y29sb3I6QmxhY2s7cGFkZGluZzo1cHg7CW1hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOiNFRUYxRjg7Jz48dGQgV2lkdGg9JzE4JScgPkNhcmJvbiBNb25veGlkZTwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MzAvMDQvMjAxNTwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MDA6MDU6MDA8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdyaWdodCcgPjxzcGFuIHN0eWxlPSdjb2xvcjpCbHVlOyc+MC40NTwvc3Bhbj4gPC90ZD48dGQgV2lkdGg9JzYlJyBhbGlnbj0nY2VudGVyJyA+bWcvbTMgPC90ZD48dGQgYWxpZ249J2NlbnRlcicgV2lkdGg9JzMxJSc+PHNwYW4gc3R5bGU9J2NvbG9yOmdyZWVuJz4wLjg0PC9zcGFuPiBtZy9tMyA8YnIvPjxzcGFuIHN0eWxlPSdjb2xvcjpQdXJwbGU7Jz5QcmVzY3JpYmVkIFN0YW5kYXJkIDogNC4wMCBtZy9tMyA8L3NwYW4+PC90ZD48dGQgV2lkdGg9JzIyJSc+Jm5ic3A7PC90ZD48L3RyPjx0ciBzdHlsZT0nZm9udC1mYW1pbHk6dmVyZGFuYTtmb250LXNpemU6MTJweDtjb2xvcjpCbGFjaztwYWRkaW5nOjVweDttYXJnaW46IDEgMSAxIDE7YmFja2dyb3VuZC1jb2xvcjpXaGl0ZTsnPjx0ZCBXaWR0aD0nMTglJyA+T3pvbmU8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdjZW50ZXInPjMwLzA0LzIwMTU8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdjZW50ZXInPjAwOjA1OjAwPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0ncmlnaHQnID48c3BhbiBzdHlsZT0nY29sb3I6Qmx1ZTsnPjU1Ljk0PC9zcGFuPiA8L3RkPjx0ZCBXaWR0aD0nNiUnIGFsaWduPSdjZW50ZXInID7CtWcvbTMgPC90ZD48dGQgYWxpZ249J2NlbnRlcicgV2lkdGg9JzMxJSc+PHNwYW4gc3R5bGU9J2NvbG9yOmdyZWVuJz43Ni43ODwvc3Bhbj4gwrVnL20zIDxici8+PHNwYW4gc3R5bGU9J2NvbG9yOlB1cnBsZTsnPlByZXNjcmliZWQgU3RhbmRhcmQgOiAxODAuMDAgwrVnL20zIDwvc3Bhbj48L3RkPjx0ZCBXaWR0aD0nMjIlJz4mbmJzcDs8L3RkPjwvdHI+PHRyIHN0eWxlPSdmb250LWZhbWlseTp2ZXJkYW5hO2ZvbnQtc2l6ZToxMnB4O2NvbG9yOkJsYWNrO3BhZGRpbmc6NXB4OwltYXJnaW46IDEgMSAxIDE7YmFja2dyb3VuZC1jb2xvcjojRUVGMUY4Oyc+PHRkIFdpZHRoPScxOCUnID5QTSAyLjU8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdjZW50ZXInPjMwLzA0LzIwMTU8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdjZW50ZXInPjAwOjA1OjAwPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0ncmlnaHQnID48c3BhbiBzdHlsZT0nY29sb3I6Qmx1ZTsnPjQzLjAwPC9zcGFuPiA8L3RkPjx0ZCBXaWR0aD0nNiUnIGFsaWduPSdjZW50ZXInID7CtWcvbTM8L3RkPjx0ZCBhbGlnbj0nY2VudGVyJyBXaWR0aD0nMzElJz48c3BhbiBzdHlsZT0nY29sb3I6Z3JlZW4nPjkyLjU4PC9zcGFuPiDCtWcvbTM8L3RkPjx0ZCBXaWR0aD0nMjIlJz4mbmJzcDs8L3RkPjwvdHI+PHRyIHN0eWxlPSdmb250LWZhbWlseTp2ZXJkYW5hO2ZvbnQtc2l6ZToxMnB4O2NvbG9yOkJsYWNrO3BhZGRpbmc6NXB4O21hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOldoaXRlOyc+PHRkIFdpZHRoPScxOCUnID5UZW1wZXJhdHVyZTwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MzAvMDQvMjAxNTwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J2NlbnRlcic+MDA6MDU6MDA8L3RkPjx0ZCBXaWR0aD0nOCUnIGFsaWduPSdyaWdodCcgPjxzcGFuIHN0eWxlPSdjb2xvcjpCbHVlOyc+MjcuOTQ8L3NwYW4+IDwvdGQ+PHRkIFdpZHRoPSc2JScgYWxpZ249J2NlbnRlcicgPsKwQzwvdGQ+PHRkIGFsaWduPSdjZW50ZXInIFdpZHRoPSczMSUnPjxzcGFuIHN0eWxlPSdjb2xvcjpncmVlbic+MzEuNDM8L3NwYW4+IMKwQzwvdGQ+PHRkIFdpZHRoPScyMiUnPiZuYnNwOzwvdGQ+PC90cj48dHIgc3R5bGU9J2ZvbnQtZmFtaWx5OnZlcmRhbmE7Zm9udC1zaXplOjEycHg7Y29sb3I6QmxhY2s7cGFkZGluZzo1cHg7CW1hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOiNFRUYxRjg7Jz48dGQgV2lkdGg9JzE4JScgPlJlbGF0aXZlIEh1bWlkaXR5PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4zMC8wNC8yMDE1PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4wMDowNTowMDwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J3JpZ2h0JyA+PHNwYW4gc3R5bGU9J2NvbG9yOkJsdWU7Jz40OC41Nzwvc3Bhbj4gPC90ZD48dGQgV2lkdGg9JzYlJyBhbGlnbj0nY2VudGVyJyA+JTwvdGQ+PHRkIGFsaWduPSdjZW50ZXInIFdpZHRoPSczMSUnPjxzcGFuIHN0eWxlPSdjb2xvcjpncmVlbic+MzkuMzk8L3NwYW4+ICU8L3RkPjx0ZCBXaWR0aD0nMjIlJz4mbmJzcDs8L3RkPjwvdHI+PHRyIHN0eWxlPSdmb250LWZhbWlseTp2ZXJkYW5hO2ZvbnQtc2l6ZToxMnB4O2NvbG9yOkJsYWNrO3BhZGRpbmc6NXB4O21hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOldoaXRlOyc+PHRkIFdpZHRoPScxOCUnID5XaW5kIFNwZWVkPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4zMC8wNC8yMDE1PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4wMDowNTowMDwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J3JpZ2h0JyA+PHNwYW4gc3R5bGU9J2NvbG9yOkJsdWU7Jz4xLjU1PC9zcGFuPiA8L3RkPjx0ZCBXaWR0aD0nNiUnIGFsaWduPSdjZW50ZXInID5tL3M8L3RkPjx0ZCBhbGlnbj0nY2VudGVyJyBXaWR0aD0nMzElJz48c3BhbiBzdHlsZT0nY29sb3I6Z3JlZW4nPjEuNDQ8L3NwYW4+IG0vczwvdGQ+PHRkIFdpZHRoPScyMiUnPiZuYnNwOzwvdGQ+PC90cj48dHIgc3R5bGU9J2ZvbnQtZmFtaWx5OnZlcmRhbmE7Zm9udC1zaXplOjEycHg7Y29sb3I6QmxhY2s7cGFkZGluZzo1cHg7CW1hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOiNFRUYxRjg7Jz48dGQgV2lkdGg9JzE4JScgPldpbmQgRGlyZWN0aW9uPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4zMC8wNC8yMDE1PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4wMDowNTowMDwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J3JpZ2h0JyA+PHNwYW4gc3R5bGU9J2NvbG9yOkJsdWU7Jz4zMDIuNDU8L3NwYW4+IDwvdGQ+PHRkIFdpZHRoPSc2JScgYWxpZ249J2NlbnRlcicgPmRlZzwvdGQ+PHRkIGFsaWduPSdjZW50ZXInIFdpZHRoPSczMSUnPjxzcGFuIHN0eWxlPSdjb2xvcjpncmVlbic+MTI5LjAzPC9zcGFuPiBkZWc8L3RkPjx0ZCBXaWR0aD0nMjIlJz4mbmJzcDs8L3RkPjwvdHI+PHRyIHN0eWxlPSdmb250LWZhbWlseTp2ZXJkYW5hO2ZvbnQtc2l6ZToxMnB4O2NvbG9yOkJsYWNrO3BhZGRpbmc6NXB4O21hcmdpbjogMSAxIDEgMTtiYWNrZ3JvdW5kLWNvbG9yOldoaXRlOyc+PHRkIFdpZHRoPScxOCUnID5WZXJ0aWNhbCBXaW5kIFNwZWVkPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4zMC8wNC8yMDE1PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4wMDowNTowMDwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J3JpZ2h0JyA+PHNwYW4gc3R5bGU9J2NvbG9yOkJsdWU7Jz4tMC4yNjwvc3Bhbj4gPC90ZD48dGQgV2lkdGg9JzYlJyBhbGlnbj0nY2VudGVyJyA+bS9zPC90ZD48dGQgYWxpZ249J2NlbnRlcicgV2lkdGg9JzMxJSc+PHNwYW4gc3R5bGU9J2NvbG9yOmdyZWVuJz4tMC4xOTwvc3Bhbj4gbS9zPC90ZD48dGQgV2lkdGg9JzIyJSc+Jm5ic3A7PC90ZD48L3RyPjx0ciBzdHlsZT0nZm9udC1mYW1pbHk6dmVyZGFuYTtmb250LXNpemU6MTJweDtjb2xvcjpCbGFjaztwYWRkaW5nOjVweDsJbWFyZ2luOiAxIDEgMSAxO2JhY2tncm91bmQtY29sb3I6I0VFRjFGODsnPjx0ZCBXaWR0aD0nMTglJyA+U29sYXIgUmFkaWF0aW9uPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4zMC8wNC8yMDE1PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4wMDowNTowMDwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J3JpZ2h0JyA+PHNwYW4gc3R5bGU9J2NvbG9yOkJsdWU7Jz4xMi4zODwvc3Bhbj4gPC90ZD48dGQgV2lkdGg9JzYlJyBhbGlnbj0nY2VudGVyJyA+Vy9tMjwvdGQ+PHRkIGFsaWduPSdjZW50ZXInIFdpZHRoPSczMSUnPjxzcGFuIHN0eWxlPSdjb2xvcjpncmVlbic+MjI3Ljk4PC9zcGFuPiBXL20yPC90ZD48dGQgV2lkdGg9JzIyJSc+Jm5ic3A7PC90ZD48L3RyPjx0ciBzdHlsZT0nZm9udC1mYW1pbHk6dmVyZGFuYTtmb250LXNpemU6MTJweDtjb2xvcjpCbGFjaztwYWRkaW5nOjVweDttYXJnaW46IDEgMSAxIDE7YmFja2dyb3VuZC1jb2xvcjpXaGl0ZTsnPjx0ZCBXaWR0aD0nMTglJyA+QmFyIHByZXNzdXJlPC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4zMC8wNC8yMDE1PC90ZD48dGQgV2lkdGg9JzglJyBhbGlnbj0nY2VudGVyJz4wMDowNTowMDwvdGQ+PHRkIFdpZHRoPSc4JScgYWxpZ249J3JpZ2h0JyA+PHNwYW4gc3R5bGU9J2NvbG9yOkJsdWU7Jz43NDIuMTU8L3NwYW4+IDwvdGQ+PHRkIFdpZHRoPSc2JScgYWxpZ249J2NlbnRlcicgPm1tSGc8L3RkPjx0ZCBhbGlnbj0nY2VudGVyJyBXaWR0aD0nMzElJz48c3BhbiBzdHlsZT0nY29sb3I6Z3JlZW4nPjc0MS43NTwvc3Bhbj4gbW1IZzwvdGQ+PHRkIFdpZHRoPScyMiUnPiZuYnNwOzwvdGQ+PC90cj48dHIgc3R5bGU9J2JhY2tncm91bmQtY29sb3I6I2RjZGNkYztmb250LWZhbWlseTpBcmlhbDtmb250LXNpemU6MTFweDtjb2xvcjpCbGFjaztmb250LXdlaWdodDpib2xkO3ZlcnRpY2FsLWFsaWduOnRvcDt0ZXh0LWFsaWduOmxlZnQ7cGFkZGluZzo1cHg7aGVpZ2h0OjExcHg7Jz48dGQgY29sc3Bhbj0nNyc+PHNwYW4gc3R5bGU9J2NvbG9yOlJlZDsnPiAqIDwvc3Bhbj5QcmVzY3JpYmVkIFN0YW5kYXJkIGZvciBDTyBhbmQgT1pPTkUgaXMgb25lIGhvdXJseSBBdmVyYWdlPC90ZD48L3RyPjwvdGFibGU+ZGQCCw8PZBYCHgdvbmNsaWNrBRhqYXZhc2NyaXB0OnNlbGYuY2xvc2UoKTtkGAEFHl9fQ29udHJvbHNSZXF1aXJlUG9zdEJhY2tLZXlfXxYEBRBidG5BZHZhbmNlU2VhcmNoBQ9idG5FeHBvcnRUb1dvcmQFCWJ0bkV4cG9ydAUIYnRuQ2xvc2X9eVT9ntsACahLP5OPBxzrGvjBcg=="/>
+    </div>
+
+    <script type="text/javascript">
+        //<![CDATA[
+        var theForm = document.forms['form1'];
+        if (!theForm) {
+            theForm = document.form1;
+        }
+        function __doPostBack(eventTarget, eventArgument) {
+            if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+                theForm.__EVENTTARGET.value = eventTarget;
+                theForm.__EVENTARGUMENT.value = eventArgument;
+                theForm.submit();
+            }
+        }
+        //]]>
+    </script>
+
+
+    <div>
+
+        <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION"
+               value="/wEWCgK+8LHrCwLPten7BQLN9aKfAgKo9/q8AwKs5dgTAqqo39kFAuTT/qYOArjCsfkNAtXckYcIApP4+ZoI9LAYunDSGV3YnPrwENz4J1FSZUc="/>
+    </div>
+    <div>
+        <table width="1003" border="0" align="center" cellpadding="0" cellspacing="0">
+            <tr>
+                <td>
+                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                    <tr>
+                                        <td valign="top" style="width: 21px">&nbsp;</td>
+                                        <td>
+                                            <table width="100%" border="0" align="center" cellpadding="10"
+                                                   cellspacing="0">
+                                                <tr>
+                                                    <td>
+                                                        <table width="100%" border="0" cellspacing="0" cellpadding="0">
+
+                                                            <tr>
+                                                                <td width="94%">
+                                                                    <table width="100%" border="0" cellspacing="0"
+                                                                           cellpadding="0" bgcolor="White">
+                                                                        <tr>
+                                                                            <td width="1%">&nbsp;</td>
+                                                                            <td width="58%" valign="top">
+                                                                                <table width="100%" border="0"
+                                                                                       cellspacing="2" cellpadding="0">
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <table border="0"
+                                                                                                   cellpadding="0"
+                                                                                                   cellspacing="3"
+                                                                                                   style="text-align: center"
+                                                                                                   width="100%">
+                                                                                                <tr>
+                                                                                                    <td colspan="4">
+                                                                                                        <fieldset>
+                                                                                                            <legend id="typeLegand"
+                                                                                                                    class="fieldset">
+                                                                                                                Current
+                                                                                                                Air
+                                                                                                                Pollution
+                                                                                                                Levels
+                                                                                                            </legend>
+                                                                                                            <table cellpadding="0"
+                                                                                                                   cellspacing="0"
+                                                                                                                   border="0"
+                                                                                                                   width="100%">
+                                                                                                                <tr>
+                                                                                                                    <td style="height: 15px">
+                                                                                                                        &nbsp;</td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td colspan="4">
+                                                                                                                        <table id="tblMain"
+                                                                                                                               width="96%"
+                                                                                                                               align="center">
+                                                                                                                            <tr>
+                                                                                                                                <td width="100%"
+                                                                                                                                    colspan="2"
+                                                                                                                                    style="height: 151px">
+                                                                                                                                    <table width="100%"
+                                                                                                                                           align="center"
+                                                                                                                                           cellpadding="0"
+                                                                                                                                           cellspacing="0"
+                                                                                                                                           border="0"
+                                                                                                                                           bordercolor="#dcdcdc">
+                                                                                                                                        <tr>
+                                                                                                                                            <td width="15%"
+                                                                                                                                                align="left"
+                                                                                                                                                style="height: 130px">
+                                                                                                                                                <img id="Image1"
+                                                                                                                                                     src="images/Noimage.png"
+                                                                                                                                                     style="height:130px;width:130px;border-width:0px;"/>
+                                                                                                                                            </td>
+                                                                                                                                            <td width="70%"
+                                                                                                                                                align="center"
+                                                                                                                                                valign="top"
+                                                                                                                                                style="height: 130px">
+                                                                                                                                                <span class="CurrentDataTopHeading">CENTRAL POLLUTION CONTROL BOARD</span><br/><span
+                                                                                                                                                    class="CurrentDataTop2Heading">CONTINUOUS AMBIENT AIR QUALITY</span>
+                                                                                                                                            </td>
+                                                                                                                                            <td width="15%"
+                                                                                                                                                align="right"
+                                                                                                                                                style="height: 130px"
+                                                                                                                                                valign="top">
+                                                                                                                                                <img id="Image11"
+                                                                                                                                                     src="images/cpcblogo.jpg"
+                                                                                                                                                     style="height:101px;width:110px;border-width:0px;"/>
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td align="right"
+                                                                                                                                    colspan="2">
+                                                                                                                                    <table cellpadding="0"
+                                                                                                                                           cellspacing="0"
+                                                                                                                                           border="0"
+                                                                                                                                           width="100%">
+                                                                                                                                        <tr>
+                                                                                                                                            <td colspan="2"
+                                                                                                                                                style="height: 26px"
+                                                                                                                                                align="center">
+                                                                                                                                                <table cellpadding="0"
+                                                                                                                                                       cellspacing="0"
+                                                                                                                                                       border="0"
+                                                                                                                                                       width="100%">
+                                                                                                                                                    <tr>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            width="50%">
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            width="50%">
+                                                                                                                                                        </td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr>
+                                                                                                                                                        <td width="70%"
+                                                                                                                                                            align="left">
+                                                                                                                                                            <span id="lblStationName"
+                                                                                                                                                                  class="reportlefttext">Air Quality Monitoring Station:</span>
+                                                                                                                                                            <span id="lblStationValue"
+                                                                                                                                                                  class="reportrighttext">Sanathnagar</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td width="30%"
+                                                                                                                                                            align="right">
+                                                                                                                                                            &nbsp;<span
+                                                                                                                                                                id="Label1"
+                                                                                                                                                                class="reportlefttext">Date :</span>
+                                                                                                                                                            <span id="lblDate"
+                                                                                                                                                                  class="reportdatetimerighttext">Thursday, April 30, 2015</span>
+                                                                                                                                                        </td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr>
+                                                                                                                                                        <td width="50%"
+                                                                                                                                                            align="left">
+                                                                                                                                                            <span id="lblAreaName"
+                                                                                                                                                                  class="reportlefttext">Type of Area:</span>
+                                                                                                                                                            <span id="lblAreaValue"
+                                                                                                                                                                  class="reportrighttext">Industrial Residential Rural and Other Area</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td width="50%"
+                                                                                                                                                            align="right">
+                                                                                                                                                            &nbsp;<span
+                                                                                                                                                                id="Label3"
+                                                                                                                                                                class="reportlefttext">Time :</span><span
+                                                                                                                                                                id="lblTime"
+                                                                                                                                                                class="reportdatetimerighttext">12:16:50 AM</span>
+                                                                                                                                                        </td>
+                                                                                                                                                    </tr>
+                                                                                                                                                </table>
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                            <td align="center"
+                                                                                                                                                colspan="2"
+                                                                                                                                                style="height: 26px">
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+
+                                                                                                                                        <tr>
+                                                                                                                                            <td colspan="2"
+                                                                                                                                                style="height: 26px"
+                                                                                                                                                align="center">
+                                                                                                                                                <span id="Label2"
+                                                                                                                                                      class="reportlefttext">Current Air Pollution Levels</span>
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                            <tr>
+                                                                                                                                <td colspan="2"
+                                                                                                                                    align="left"
+                                                                                                                                    style="height: 160px">
+                                                                                                                                    <table border="0"
+                                                                                                                                           cellpadding="0"
+                                                                                                                                           cellspacing="0"
+                                                                                                                                           width="100%"
+                                                                                                                                           bordercolor="gainsboro">
+                                                                                                                                        <tr>
+                                                                                                                                            <td align="center"
+                                                                                                                                                style="height: 20px">
+                                                                                                                                                &nbsp;<span
+                                                                                                                                                    id="lblMessage"
+                                                                                                                                                    class="lblMessage"></span>
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr id="trView">
+                                                                                                                                            <td align="left">
+                                                                                                                                                <table cellpadding="0"
+                                                                                                                                                       cellspacing="0">
+                                                                                                                                                    <tr>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <img id="Image10"
+                                                                                                                                                                 src="images/curr.gif"
+                                                                                                                                                                 style="height:20px;width:18px;border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnCurrentData"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               href="javascript:__doPostBack('btnCurrentData','')"
+                                                                                                                                                               style="color:background;">Current
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image2"
+                                                                                                                                                                src="images/middle_bullet.gif"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnPrevious15MinData"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               href="javascript:__doPostBack('btnPrevious15MinData','')"
+                                                                                                                                                               style="color:background;">Previous
+                                                                                                                                                                15
+                                                                                                                                                                Min
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image3"
+                                                                                                                                                                src="images/middle_bullet.gif"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnPrevious30MinData"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               href="javascript:__doPostBack('btnPrevious30MinData','')"
+                                                                                                                                                               style="color:background;">Previous
+                                                                                                                                                                30
+                                                                                                                                                                Min
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image4"
+                                                                                                                                                                src="images/middle_bullet.gif"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnPrevious1HourData"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               href="javascript:__doPostBack('btnPrevious1HourData','')"
+                                                                                                                                                               style="color:background;">Previous
+                                                                                                                                                                1
+                                                                                                                                                                Hour
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px; width: 29px;">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image5"
+                                                                                                                                                                src="images/middle_bullet.gif"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnPrevious1DayData"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               href="javascript:__doPostBack('btnPrevious1DayData','')"
+                                                                                                                                                               style="color:background;">Previous
+                                                                                                                                                                1
+                                                                                                                                                                Day
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr>
+                                                                                                                                                        <td>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                        <td>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image6"
+                                                                                                                                                                src="images/middlerev.GIF"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnNext15MinData"
+                                                                                                                                                               disabled="disabled"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               style="color:background;">Next
+                                                                                                                                                                15
+                                                                                                                                                                Min
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image7"
+                                                                                                                                                                src="images/middlerev.GIF"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnNext30MinData"
+                                                                                                                                                               disabled="disabled"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               style="color:background;">Next
+                                                                                                                                                                30
+                                                                                                                                                                Min
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image8"
+                                                                                                                                                                src="images/middlerev.GIF"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnNext1HourData"
+                                                                                                                                                               disabled="disabled"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               style="color:background;">Next
+                                                                                                                                                                1
+                                                                                                                                                                Hour
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="right"
+                                                                                                                                                            style="height: 18px; width: 29px;">
+                                                                                                                                                            &nbsp;&nbsp;<img
+                                                                                                                                                                id="Image9"
+                                                                                                                                                                src="images/middlerev.GIF"
+                                                                                                                                                                style="border-width:0px;"/>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align="left"
+                                                                                                                                                            style="height: 18px">
+                                                                                                                                                            <a id="btnNext1DayData"
+                                                                                                                                                               disabled="disabled"
+                                                                                                                                                               class="Prevlink"
+                                                                                                                                                               style="color:background;">Next
+                                                                                                                                                                1
+                                                                                                                                                                Day
+                                                                                                                                                                Data</a>
+                                                                                                                                                        </td>
+                                                                                                                                                    </tr>
+                                                                                                                                                </table>
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+
+                                                                                                                                        <tr class="PreviousDataButtonRow">
+                                                                                                                                            <td>
+                                                                                                                                                <span id="lblCurrentDateTime">Date Time : 30/04/2015 00:05:00</span>&nbsp;
+                                                                                                                                            </td>
+                                                                                                                                        </tr>
+                                                                                                                                        <tr>
+                                                                                                                                            <td id="Td1"
+                                                                                                                                                style="height: 19px">
+                                                                                                                                                <span id="lblReportCurrentData"><table
+                                                                                                                                                        cellspacing='0'
+                                                                                                                                                        cellpadding='0'
+                                                                                                                                                        Width='100%'
+                                                                                                                                                        border='1'
+                                                                                                                                                        bordercolor='gainsboro'>
+                                                                                                                                                    <tr bgcolor='White'
+                                                                                                                                                        style='font-family:Arial;font-size:11px;color:Black;font-weight:bold;vertical-align:top;text-align:center;padding:5px;'>
+                                                                                                                                                        <td Width='23%'
+                                                                                                                                                            align='left'>
+                                                                                                                                                            Parameters
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'>
+                                                                                                                                                            Date
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'>
+                                                                                                                                                            Time
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'>
+                                                                                                                                                            Concentration
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'>
+                                                                                                                                                            Unit
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='27%'>
+                                                                                                                                                            <b>Concentration
+                                                                                                                                                                (previous
+                                                                                                                                                                24
+                                                                                                                                                                Hours)
+                                                                                                                                                                /
+                                                                                                                                                                Prescribed
+                                                                                                                                                                Standard</b>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Remarks
+                                                                                                                                                        </td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;	margin: 1 1 1 1;background-color:#EEF1F8;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Nitric
+                                                                                                                                                            Oxide
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>0.79</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            µg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>7.19</span>
+                                                                                                                                                            µg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;margin: 1 1 1 1;background-color:White;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Nitrogen
+                                                                                                                                                            dioxide
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>30.83</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            µg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>33.18</span>
+                                                                                                                                                            µg/m3
+                                                                                                                                                            <br/><span
+                                                                                                                                                                style='color:Purple;'>Prescribed Standard : 80.00 µg/m3 </span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;	margin: 1 1 1 1;background-color:#EEF1F8;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Oxides
+                                                                                                                                                            of
+                                                                                                                                                            Nitrogen
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>17.05</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            ppb
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>23.50</span>
+                                                                                                                                                            ppb
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;margin: 1 1 1 1;background-color:White;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Sulfur
+                                                                                                                                                            Dioxide
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>3.26</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            µg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>28.04</span>
+                                                                                                                                                            µg/m3
+                                                                                                                                                            <br/><span
+                                                                                                                                                                style='color:Purple;'>Prescribed Standard : 80.00 µg/m3 </span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;	margin: 1 1 1 1;background-color:#EEF1F8;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Carbon
+                                                                                                                                                            Monoxide
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>0.45</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            mg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>0.84</span>
+                                                                                                                                                            mg/m3
+                                                                                                                                                            <br/><span
+                                                                                                                                                                style='color:Purple;'>Prescribed Standard : 4.00 mg/m3 </span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;margin: 1 1 1 1;background-color:White;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Ozone
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>55.94</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            µg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>76.78</span>
+                                                                                                                                                            µg/m3
+                                                                                                                                                            <br/><span
+                                                                                                                                                                style='color:Purple;'>Prescribed Standard : 180.00 µg/m3 </span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;	margin: 1 1 1 1;background-color:#EEF1F8;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            PM
+                                                                                                                                                            2.5
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>43.00</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            µg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>92.58</span>
+                                                                                                                                                            µg/m3
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;margin: 1 1 1 1;background-color:White;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Temperature
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>27.94</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            °C
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>31.43</span>
+                                                                                                                                                            °C
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;	margin: 1 1 1 1;background-color:#EEF1F8;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Relative
+                                                                                                                                                            Humidity
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>48.57</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            %
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>39.39</span>
+                                                                                                                                                            %
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;margin: 1 1 1 1;background-color:White;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Wind
+                                                                                                                                                            Speed
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>1.55</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            m/s
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>1.44</span>
+                                                                                                                                                            m/s
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;	margin: 1 1 1 1;background-color:#EEF1F8;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Wind
+                                                                                                                                                            Direction
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>302.45</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            deg
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>129.03</span>
+                                                                                                                                                            deg
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;margin: 1 1 1 1;background-color:White;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Vertical
+                                                                                                                                                            Wind
+                                                                                                                                                            Speed
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>-0.26</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            m/s
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>-0.19</span>
+                                                                                                                                                            m/s
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;	margin: 1 1 1 1;background-color:#EEF1F8;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Solar
+                                                                                                                                                            Radiation
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>12.38</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            W/m2
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>227.98</span>
+                                                                                                                                                            W/m2
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='font-family:verdana;font-size:12px;color:Black;padding:5px;margin: 1 1 1 1;background-color:White;'>
+                                                                                                                                                        <td Width='18%'>
+                                                                                                                                                            Bar
+                                                                                                                                                            pressure
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            30/04/2015
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            00:05:00
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='8%'
+                                                                                                                                                            align='right'>
+                                                                                                                                                            <span style='color:Blue;'>742.15</span>
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='6%'
+                                                                                                                                                            align='center'>
+                                                                                                                                                            mmHg
+                                                                                                                                                        </td>
+                                                                                                                                                        <td align='center'
+                                                                                                                                                            Width='31%'>
+                                                                                                                                                            <span style='color:green'>741.75</span>
+                                                                                                                                                            mmHg
+                                                                                                                                                        </td>
+                                                                                                                                                        <td Width='22%'>
+                                                                                                                                                            &nbsp;</td>
+                                                                                                                                                    </tr>
+                                                                                                                                                    <tr style='background-color:#dcdcdc;font-family:Arial;font-size:11px;color:Black;font-weight:bold;vertical-align:top;text-align:left;padding:5px;height:11px;'>
+                                                                                                                                                        <td colspan='7'>
+                                                                                                                                                            <span style='color:Red;'> * </span>Prescribed
+                                                                                                                                                            Standard
+                                                                                                                                                            for
+                                                                                                                                                            CO
+                                                                                                                                                            and
+                                                                                                                                                            OZONE
+                                                                                                                                                            is
+                                                                                                                                                            one
+                                                                                                                                                            hourly
+                                                                                                                                                            Average
+                                                                                                                                                        </td>
+                                                                                                                                                    </tr>
+                                                                                                                                                </table></span>
+                                                                                                                                            </td>
+
+                                                                                                                                        </tr>
+                                                                                                                                    </table>
+                                                                                                                                </td>
+                                                                                                                            </tr>
+                                                                                                                        </table>
+
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                                <tr>
+                                                                                                                    <td align="center"
+                                                                                                                        height="40px">
+                                                                                                                        <input type="image"
+                                                                                                                               name="btnAdvanceSearch"
+                                                                                                                               id="btnAdvanceSearch"
+                                                                                                                               src="images/advancesearch.jpg"
+                                                                                                                               style="border-width:0px;"/>
+                                                                                                                        <input type="image"
+                                                                                                                               name="btnExportToWord"
+                                                                                                                               id="btnExportToWord"
+                                                                                                                               src="images/download.png"
+                                                                                                                               style="border-width:0px;"/>
+                                                                                                                        <input type="image"
+                                                                                                                               name="btnExport"
+                                                                                                                               id="btnExport"
+                                                                                                                               src="images/download_exel.png"
+                                                                                                                               style="border-width:0px;"/>
+                                                                                                                        <input type="image"
+                                                                                                                               name="btnClose"
+                                                                                                                               id="btnClose"
+                                                                                                                               src="images/close.png"
+                                                                                                                               onclick="javascript:self.close();"
+                                                                                                                               style="border-width:0px;"/>
+                                                                                                                    </td>
+                                                                                                                </tr>
+                                                                                                            </table>
+                                                                                                        </fieldset>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                                <tr>
+                                                                                                    <td align="center"
+                                                                                                        style="height: 12px">
+                                                                                                        <span class="copyright">copyright @ Central Pollution Control Board. All Rights Reserved.</span><a
+                                                                                                            href="frmUserDisclamer.aspx"
+                                                                                                            class="disclamerlink"
+                                                                                                            target="_blank">|
+                                                                                                        Disclamer</a>
+                                                                                                    </td>
+                                                                                                </tr>
+                                                                                            </table>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </table>
+                                                                            </td>
+                                                                            <td width="1%">&nbsp;</td>
+                                                                        </tr>
+                                                                    </table>
+                                                                </td>
+                                                            </tr>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </table>
+                                        </td>
+                                        <td width="21" valign="top">&nbsp;</td>
+                                    </tr>
+                                </table>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+</form>
+</body>
+</html>
