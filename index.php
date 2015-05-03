@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="css/jquery-jvectormap-2.0.2.css" type="text/css" media="screen"/>
         <link rel="stylesheet" href="dist/css/bootstrap-theme.min.css" type="text/css"/>
         <link rel="stylesheet" href="dist/css/bootstrap.min.css" type="text/css"/>
+        <link rel="stylesheet" href="css/style.css">
         <link rel="stylesheet" href="css/mycss.css" type="text/css"/>
         <script src="js/jquery-2.1.3.min.js"></script>
         <script src="dist/js/bootstrap.min.js"></script>
@@ -117,17 +118,29 @@
         <div class="container">
           <div class="starter-template">
             <div id="map" class="margin" style="width: 700px; height: 600px"></div>
+            
             <div id="table">     
                 <table class="table table-bordered" align "right">
                     <tr>
                         <th>Gas</th>
                         <th>AQI</th>
                     </tr>
+                
                 <?php
-                    $url = "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka&StateId=6&CityId=85";
+                    $center = "Dwarka, Delhi";
+                    if (isset($_GET["w1"]) && isset($_GET["w2"])){
+                        $url = $_GET["w1"];
+                        $center = $_GET["w2"];
+                        //echo $url;
+                    }
+                    else{
+                        $url = "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka&StateId=6&CityId=85";
+                    }
                     fill_table($url);
+                    echo $center;
                 ?>
                 </table>
+                
             </div>
 
             <div class="alert alert-info" id = "result"><?php display_result() ?></div>
@@ -196,15 +209,21 @@
                     ]
                 }
 
-                var urls=["http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Ihbas&StateId=6&CityId=85",
-                            "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.&StateId=6&CityId=85",
-                            "http: //www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka&StateId=6&CityId=85",
+                var urls=["http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Ihbas%26StateId=6%26CityId=85",
+                            "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.%26StateId=6%26CityId=85",
+                            "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka%26StateId=6%26CityId=85",
                             "http: //www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Sanjay%20Palace&StateId=28&CityId=253",
                             "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Talkatora&StateId=28&CityId=256",
                             "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Nehru%20Nagar&StateId=28&CityId=278",
                             "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Ardhali%20Bazar&StateId=28&CityId=270"
                             ];
 
+                var centers = ["Dilshad Garden, Delhi",
+                                "D.C.E, Delhi",
+                                "Dwarka, Delhi",
+                                "Sanjay Palace, U.P",
+                                "Talkatora, U.P"
+                ];
              
                 var mar = {
                     'IN-DL': [
@@ -273,9 +292,9 @@
                     },
 
                     onViewportChange: function(e,s){
-                      console.log(s);
+                      //console.log(s);
                       if(x===0 && s<1.5){
-                        console.log(x);
+                        //console.log(x);
                         map.removeAllMarkers(); 
                         x=1;
                       }
@@ -288,6 +307,8 @@
 
                     onMarkerClick: function(e, c){
                     // here replace "#al" with your id for div!!
+                    window.location.href = "index.php?w1=" + urls[c] + "&w2=" + centers[c];
+
                     console.log(urls[c]);
                     
                     
