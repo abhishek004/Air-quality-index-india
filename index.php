@@ -111,7 +111,7 @@
 
           <div class="starter-template">
             <div id="map" class="margin" style="width: 700px; height: 600px"></div>
-            <div id="table"><p>Insert your table here in the 'table' div. Remove the 'p' tag</p></div>
+            <div id="table"><p id="al">Insert your table here in the 'table' div. Remove the 'p' tag</p></div>
           </div>
 
         </div><!-- /.container -->
