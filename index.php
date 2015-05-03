@@ -156,6 +156,10 @@
                 return preg_replace('/[^A-Za-z0-9\\xB5\-\/]/', '', $string); // Removes special chars.
             }
             
+            $max = array(
+                "gas" => "",
+                "aqi" => 0
+            ); //most prominent pollutant
             function fill_table($url){
                 //$url = "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka&StateId=6&CityId=85";
                 $dom = new DOMDocument();
@@ -164,7 +168,7 @@
                 $xpath = new DOMXpath($dom);
 
                 $table = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr");
-
+                global $max;
                 //echo "Gas name, concentration value, unit, concentration(previous 24 hours)/prescribed standard, AQI Value<br>";
                 for($index = 2; $index < $table->length; $index++){
                     $gas = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr[$index]/td[1]/text()");
@@ -181,8 +185,17 @@
                         echo "<td>" . $gas->item(0)->nodeValue . "</td>";
                         echo "<td>" . $result . "</td>";
                         echo "</tr>";
+                        if($result > $max["aqi"]){
+                            $max["gas"] = $gas->item(0)->nodeValue;
+                            $max["aqi"] = $result;
+                        }
                     }
                 }
+            }
+
+            function display_result(){
+                echo "Most prominent pollutant is ==> ".$max["gas"]."<br>";
+                echo "With AQI: ".$max["aqi"];
             }
             //echo "<br>".getIndex("PM 2.5", 29.18);
             
@@ -202,9 +215,6 @@
 
           <div class="starter-template">
             <div id="map" class="margin" style="width: 700px; height: 600px"></div>
-<<<<<<< HEAD
-            <div id="table"><p id="al">Insert your table here in the 'table' div. Remove the 'p' tag</p></div>
-=======
             <div id="table">
                 <table border='1' align "right">
                     <tr>
@@ -215,8 +225,10 @@
                     $url = "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka&StateId=6&CityId=85";
                     fill_table($url);
                 ?>
+                </table>
             </div>
->>>>>>> origin/master
+
+            <!-- <div id = "result"><?php display_result() ?></div> -->
           </div>
 
         </div><!-- /.container -->
