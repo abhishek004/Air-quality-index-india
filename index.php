@@ -16,12 +16,19 @@
         <style>
 
             body{
-                 background: url(Bg/1.jpg) no-repeat center center fixed; 
+                 /*background: url(Bg/1.jpg) no-repeat center center fixed; 
                  -webkit-background-size: cover;
                  -moz-background-size: cover;
                  -o-background-size: cover;
-                 background-size: cover;
+                 background-size: cover;*/
+                 background-color:#F1EDE3; 
+                 padding-top: 50px;
             }
+
+            /*.starter-template {
+              padding: 40px 15px;
+              text-align: center;
+            }*/
 
             div{
                 -moz-border-radius: 10px;
@@ -35,16 +42,16 @@
                 margin-bottom: 20px;
             }
 
-            .container{
+           /* .container{
                 position:relative;
-            }
+            }*/
             #map{
-                position: fixed;
-                clear: left;
+               /* position: fixed;
+                clear: left;*/
             }
 
             .myclass{
-                float:right;
+               /* float:right;*/
             }
 
             #test{
@@ -56,20 +63,67 @@
                 
             }
 
+            #table{
+                position: fixed;
+                clear: left;
+                float:left;
+                width:400px;
+                top:200px;
+                left:850px;
+            }
+
+
+
             #al{
                 color:black;
+            }
+
+            #Heading{
+                color: white;
+                padding: 0px;
+                margin-top: 15px;
             }
 
         </style>
     </head>
     <body>
-        <div class = "container">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <h3 id="Heading">Air Quality Index</h3>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+              <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+              </ul>
+            </div><!--/.nav-collapse -->
+          </div>
+        </nav>
+
+        <div class="container">
+
+          <div class="starter-template">
+            <div id="map" class="margin" style="width: 700px; height: 600px"></div>
+            <div id="table"><p>Insert your table here in the 'table' div. Remove the 'p' tag</p></div>
+          </div>
+
+        </div><!-- /.container -->
+
+        <!-- <div class = "container">
             <div class = "row">
                 <div id="map" class="margin" style="width: 700px; height: 600px"></div>
                 <div id = "test" class="alert alert-info myclass fade in" role="alert"><p id="al">Abhishek</p></div>
             </div>
             
-        </div>
+        </div> -->
         <?php 
             //$pg =  file_get_html('http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.&StateId=6&CityId=85');
             echo "HELLLLLO";
@@ -98,7 +152,7 @@
             };
 */
             
-            var palette = ['#0c2b0a', '#061133', '#542529', '#66345a', '#f72109'];
+            var palette = ['#181F4B', '#001356'];
 
             $(function(){
                 var generateColors = function(){
