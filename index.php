@@ -46,6 +46,7 @@
                 position:relative;
             }*/
             #map{
+                float:left;
                /* position: fixed;
                 clear: left;*/
             }
@@ -64,12 +65,10 @@
             }
 
             #table{
-                position: fixed;
-                clear: left;
-                float:left;
+                position: relative;
+                float:right;
                 width:400px;
                 top:200px;
-                left:850px;
             }
 
 
