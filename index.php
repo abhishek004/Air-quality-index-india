@@ -69,7 +69,7 @@
                 position: relative;
                 float:right;
                 width:400px;
-                top:100px;
+                top:20px;
             }
 
 
@@ -85,11 +85,39 @@
             }
 
             #result{
-                width:400px;
+                width:420px;
                 height: 70px;
                 position: relative;
                 float: right;
-                top: 150px;
+                font-size: 1.5em;
+                font-family: 'Tangerine', serif;
+                top: 20px;
+            }
+            #aqi{
+                width:150px;
+                height: 70px;
+                border-color: black;
+                float: right;
+                margin-bottom: 10px;
+                margin-top:30px;
+                font-size: 2em;
+                margin-right: 110px;
+                border-style: solid;
+                border-width: medium;
+            }
+            #bar{
+                width:350px;
+                height: 150px;
+                float:right;
+                margin-top:10px;
+                margin-bottom: 10px;
+                padding: 10px;
+            }
+            #message{
+                position: relative;
+                margin-top:100px;
+                float:right;
+                width:400px;
             }
         </style>
     </head>
@@ -121,10 +149,7 @@
             
             <div id="table">     
                 <table class="table table-bordered" align "right">
-                    <tr>
-                        <th>Gas</th>
-                        <th>AQI</th>
-                    </tr>
+                   
                 
                 <?php
                     $center = "Dwarka, Delhi";
@@ -137,14 +162,15 @@
                         $url = "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka&StateId=6&CityId=85";
                     }
                     fill_table($url);
-                    echo $center;
+                    echo "<h2>".$center."</h2>";
                 ?>
                 </table>
                 
             </div>
-
-            <div class="alert alert-info" id = "result"><?php display_result() ?></div>
-           
+            <div class = "alert" id="aqi"><?php display_AQI(); ?></div>
+            <div class = "alert alert-danger" id="message"><?php display_bar();?></div>
+            <div class="alert alert-info" id = "result"><?php display_gas(); ?></div>
+            <div id="bar"><?php echo "<progress value=".(500 - $max["aqi"])." max=".'"500"'."></progress>";?></div> 
           </div>
         </div><!-- /.container -->
 
@@ -201,28 +227,43 @@
                         {latLng: [28.783376811716238,77.00896146131728], name:'D.C.E'},
                         {latLng: [28.585246821204954,76.90802361409402], name:'Dwarka'},
                         {latLng: [27.161830820078162,77.83037160828435], name: 'Agra(Sanjay Place)'},
-                        {latLng: [27.111786805400317,79.79768552106408], name:'Lucknow(Talkatora)'},
-                        {latLng: [26.303126672921213,79.75353238460825], name:'Kanpur(Nehru Nagar)'},
-                        {latLng: [25.371813455349116,82.89064557518128], name:'Varanasi(Ardhali Bazar)'},
+                        {latLng: [27.111786805400317,79.79768552106408], name:'Lucknow (Talkatora)'},
+                        {latLng: [26.303126672921213,79.75353238460825], name:'Kanpur (Nehru Nagar)'},
+                        {latLng: [25.371813455349116,82.89064557518128], name:'Varanasi (Ardhali Bazar)'},
                         {latLng: [28.294864650453857,77.34307227196392], name:'Faridabad'},
-                        {latLng: [22.51450643032689,71.76962942369802], name:'Ahmedabad'}        
+                        {latLng: [22.51450643032689,71.76962942369802], name:'Ahmedabad'},
+                        {latLng: [17.050299940948165,78.69975191254275], name:'Hyderabad (Sanathnagar)'},
+                        {latLng: [13.053009776010425,77.47333750835979], name:'Bangalore (Peenya)'},
+                        {latLng: [12.810340886808428,80.01802839488053], name:'Chennai (Alandur Bus Depot)'}        
                     ]
                 }
 
                 var urls=["http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Ihbas%26StateId=6%26CityId=85",
                             "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=D.C.E.%26StateId=6%26CityId=85",
                             "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Dwarka%26StateId=6%26CityId=85",
-                            "http: //www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Sanjay%20Palace&StateId=28&CityId=253",
-                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Talkatora&StateId=28&CityId=256",
-                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Nehru%20Nagar&StateId=28&CityId=278",
-                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Ardhali%20Bazar&StateId=28&CityId=270"
+                            "http://www.cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Sanjay%20Palace%26StateId=28%26CityId=253",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Talkatora%26StateId=28%26CityId=256",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Nehru%20Nagar%26StateId=28%26CityId=278",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Ardhali%20Bazar%26StateId=28%26CityId=270",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Sector16A%20Faridabad%26StateId=9%26CityId=365",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Maninagar%26StateId=8%26CityId=337",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Hyderabad%26StateId=30%26CityId=7",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=BTM%26StateId=13%26CityId=136",
+                            "http://cpcb.gov.in/CAAQM/frmCurrentDataNew.aspx?StationName=Alandur%20%26StateId=25%26CityId=546"
+
                             ];
 
                 var centers = ["Dilshad Garden, Delhi",
                                 "D.C.E, Delhi",
                                 "Dwarka, Delhi",
                                 "Sanjay Palace, U.P",
-                                "Talkatora, U.P"
+                                "Talkatora, U.P",
+                                "Ardhali, U.P",
+                                "Faridabad",
+                                "Ahmedabad",
+                                "Sanathnagar, Hyderabad",
+                                "Peenya, Banglore",
+                                "Chennai, Alandur Bus Depot"
                 ];
              
                 var mar = {

@@ -63,6 +63,7 @@
         global $aqi;
         //echo "Gas name, concentration value, unit, concentration(previous 24 hours)/prescribed standard, AQI Value<br>";
         //echo '<table class="table table-bordered">';
+        echo "<tr><th>Gas</th><th>AQI</th></tr>";
         for($index = 2; $index < $table->length; $index++){
             $gas = $xpath->query(".//*[@id='lblReportCurrentData']/table/tr[$index]/td[1]/text()");
             //echo $gas->item(0)->nodeValue." ";
@@ -88,18 +89,26 @@
         //echo "</table>";
     }
 
-    function display_result(){
+    function display_gas(){
         global $max;
-        $message = "";
-        echo 'Most prominent pollutant is ==> '.$max["gas"].'<br>'."With AQI: ".$max["aqi"];
-        if($max["gas"] <= 50 ) $message = "Minimal Impact";
-        else if($max["gas"] <= 100) $message = "Minor breathing discomfort to sensitive people";
-        else if($max["gas"] <= 200) $message = "Breathing discomfort to the people with lungs, asthma and heart diseases";
-        else if($max["gas"] <= 300) $message = "Breathing discomfort to most people on prolonged exposure";
-        else if($max["gas"] <= 400) $message = "Respiratory illness on prolonged exposure";
-        else if($max["gas"] <= 500) $message = "Affects healthy people and seriously impacts those with existing diseases";
-        echo "<br><br><progress value=".(500 - $max["aqi"])." max=".'"500"'."></progress>";
-        echo "<br>".$message;
+       
+        echo 'Most prominent pollutant is '.$max["gas"];
+    }
+
+    function display_AQI(){
+        global $max;
+        echo "AQI: ".$max["aqi"];
+    }
+    function display_bar(){
+        global $max;
+        $message="";
+        if($max["aqi"] <= 50 ) {$message = "Minimal Impact";}
+        else if($max["aqi"] <= 100) {$message = "Minor breathing discomfort to sensitive people";}
+        else if($max["aqi"] <= 200) {$message = "Breathing discomfort to the people with lungs, asthma and heart diseases";}
+        else if($max["aqi"] <= 300) {$message = "Breathing discomfort to most people on prolonged exposure";}
+        else if($max["aqi"] <= 400) {$message = "Respiratory illness on prolonged exposure";}
+        else if($max["aqi"] <= 500) {$message = "Affects healthy people and seriously impacts those with existing diseases";}
+        echo $message;
     }
 
     //echo "<br>".getIndex("PM 2.5", 29.18);
